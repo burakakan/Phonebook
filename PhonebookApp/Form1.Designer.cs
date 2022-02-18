@@ -44,6 +44,8 @@ namespace PhonebookApp
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtLastName
@@ -72,7 +74,7 @@ namespace PhonebookApp
             // 
             this.btnSave.Location = new System.Drawing.Point(137, 109);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(115, 29);
+            this.btnSave.Size = new System.Drawing.Size(60, 29);
             this.btnSave.TabIndex = 21;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -88,10 +90,12 @@ namespace PhonebookApp
             this.FirstName,
             this.LastName,
             this.PhoneNum});
+            this.listv.FullRowSelect = true;
             this.listv.HideSelection = false;
             this.listv.Location = new System.Drawing.Point(16, 153);
+            this.listv.MultiSelect = false;
             this.listv.Name = "listv";
-            this.listv.Size = new System.Drawing.Size(654, 283);
+            this.listv.Size = new System.Drawing.Size(654, 265);
             this.listv.TabIndex = 20;
             this.listv.UseCompatibleStateImageBehavior = false;
             this.listv.View = System.Windows.Forms.View.Details;
@@ -118,16 +122,17 @@ namespace PhonebookApp
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(258, 109);
+            this.btnUpdate.Location = new System.Drawing.Point(203, 109);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(115, 29);
+            this.btnUpdate.Size = new System.Drawing.Size(81, 29);
             this.btnUpdate.TabIndex = 19;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(416, 112);
+            this.txtSearch.Location = new System.Drawing.Point(415, 74);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(254, 26);
             this.txtSearch.TabIndex = 18;
@@ -135,7 +140,7 @@ namespace PhonebookApp
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(412, 89);
+            this.label4.Location = new System.Drawing.Point(411, 51);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 20);
             this.label4.TabIndex = 17;
@@ -168,11 +173,33 @@ namespace PhonebookApp
             this.label1.TabIndex = 14;
             this.label1.Text = "First Name:";
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(290, 109);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(82, 29);
+            this.btnRemove.TabIndex = 25;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(415, 106);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(254, 29);
+            this.btnSearch.TabIndex = 26;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 448);
+            this.ClientSize = new System.Drawing.Size(682, 430);
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.txtPhoneNum);
@@ -211,6 +238,8 @@ namespace PhonebookApp
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnSearch;
     }
 }
 

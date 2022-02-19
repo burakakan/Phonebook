@@ -27,6 +27,12 @@ namespace PhonebookApp
             string ln = txtLastName.Text.Trim();
             string pn = txtPhoneNum.Text;
 
+            if (fn == "" || ln == "" || pn == "")
+            {
+                MessageBox.Show("Fields cannot be left empty.");
+                return;
+            }
+
             db.Contacts.Add(new Contact() { FirstName = fn, LastName = ln, PhoneNumber = pn });
 
             bool saved = db.SaveChanges() != 0;
@@ -57,6 +63,11 @@ namespace PhonebookApp
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (listv.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("Select the contact to update.");
+                return;
+            }
             ListViewItem lvi = listv.SelectedItems[0];
             int id = Convert.ToInt32(lvi.Text);
 
@@ -66,6 +77,11 @@ namespace PhonebookApp
             string ln = txtLastName.Text.Trim();
             string pn = txtPhoneNum.Text;
 
+            if (fn == "" || ln == "" || pn == "")
+            {
+                MessageBox.Show("Fields cannot be left empty.");
+                return;
+            }
             contact.FirstName = fn;
             contact.LastName = ln;
             contact.PhoneNumber = pn;
@@ -77,8 +93,22 @@ namespace PhonebookApp
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
+            if (listv.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("Select the contact to update.");
+                return;
+            }
             ListViewItem lvi = listv.SelectedItems[0];
-            int id = Convert.ToInt32(lvi.Text);
+            int id;
+            try
+            {
+                id = Convert.ToInt32(lvi.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Exception: Non-integer Id.");
+                return;
+            }
 
             db.Contacts.Remove(db.Contacts.Single(c => c.ContactID == id));
             db.SaveChanges();

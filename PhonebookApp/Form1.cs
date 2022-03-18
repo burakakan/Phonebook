@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PhonebookApp
@@ -38,9 +34,8 @@ namespace PhonebookApp
             bool saved = db.SaveChanges() != 0;
 
             RefreshContactList();
-
+            ClearBoxes();
             MessageBox.Show(saved ? "Contact Added." : "Error");
-
         }
         private void RefreshContactList()
         {
@@ -89,6 +84,8 @@ namespace PhonebookApp
             db.SaveChanges();
 
             RefreshContactList();
+
+            ClearBoxes();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -125,5 +122,10 @@ namespace PhonebookApp
             PopulateList(list);
         }
 
+        private void ClearBoxes()
+        {
+            foreach (TextBoxBase tb in Controls.OfType<TextBoxBase>())
+                tb.Clear();
+        }
     }
 }

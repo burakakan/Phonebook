@@ -1,4 +1,4 @@
-## Before Build
+## Before Building
 
 • Run the .sql script with the appropriate SQL Server version using SQL Server Management Studio.
 

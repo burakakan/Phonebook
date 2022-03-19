@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity.Core.EntityClient;
 using System.Linq;
@@ -9,13 +10,15 @@ namespace PhonebookApp
 {
     public partial class Form1 : Form
     {
-        string userId = "sa";
-        string password = "123";
+        string userId, password;
 
         PhonebookEntities db;
         public Form1()
         {
             InitializeComponent();
+
+            userId = ConfigurationManager.AppSettings["UserId"];
+            password = ConfigurationManager.AppSettings["Password"];
 
             EntityConnectionStringBuilder conStrBuilder = new EntityConnectionStringBuilder
             {

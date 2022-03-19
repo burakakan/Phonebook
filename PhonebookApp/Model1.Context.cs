@@ -19,7 +19,11 @@ namespace PhonebookApp
             : base("name=PhonebookEntities")
         {
         }
-    
+        public PhonebookEntities(string conStr)
+            : base(conStr)
+        {
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

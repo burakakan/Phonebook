@@ -1,18 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Core.EntityClient;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace PhonebookApp
 {
     public partial class Form1 : Form
     {
+        string userId = "sa";
+        string password = "123";
+
+        PhonebookEntities db;
         public Form1()
         {
             InitializeComponent();
+
+            EntityConnectionStringBuilder conStrBuilder = new EntityConnectionStringBuilder
+            {
+                Metadata = "res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl",
+                Provider = "System.Data.SqlClient",
+                ProviderConnectionString = $"data source=.;initial catalog=Phonebook;persist security info=True;user id={userId};password={password};MultipleActiveResultSets=True;App=EntityFramework"
+            };
+
+            db = new PhonebookEntities(conStrBuilder.ConnectionString);
         }
-        PhonebookEntities db = new PhonebookEntities();
+
         private void Form1_Load(object sender, EventArgs e)
         {
             RefreshContactList();

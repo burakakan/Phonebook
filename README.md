@@ -1,6 +1,6 @@
 # Phonebook
 
-• A simple phonebook app that supports adding, searching and removing contacts to/from a database.
+• A simple phonebook app that supports adding, editing, removing and searching contacts stored on a database.
 
 • Developed using Microsoft SQL Server, Entity Framework and C# with Database First Approach to study CRUD operations.
 
